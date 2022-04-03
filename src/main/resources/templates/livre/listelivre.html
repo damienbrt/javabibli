@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<h1 class="text-3xl font-bold">
+    Liste livre
+</h1>
+<div class="flex flex-col gap-2" data-th-each="l : ${livre}">
+    <div class="flex flex-row gap-2 border-2 border-black justify-between items-center">
+        <div class="flex flex-col justify-center items-center"><span class="font-bold">id :</span><span data-th-text="${l.id}"></span></div>
+        <div class="flex flex-col justify-center items-center"><span class="font-bold">nom :</span><span data-th-text="${l.nom}"></span></div>
+        <div class="flex flex-col justify-center items-center"><span class="font-bold">nombre :</span><span data-th-text="${l.nombre}"></span></div>
+        <div class="flex flex-col justify-center items-center"><span class="font-bold">dateEmprunt :</span><span data-th-text="${l.dateEmprunt} ?: '(no content)'"></span></div>
+        <div class="flex flex-col justify-center items-center"><span class="font-bold">dateRetour :</span><span data-th-text="${l.dateRetour} ?: '(no content)'"></span></div>
+        <div class="flex flex-col justify-center items-center"><span class="font-bold">datePret :</span><span data-th-text="${l.delaiPret} ?: '(no content)'"></span></div>
+        <div class="flex flex-col justify-center items-center"><span class="font-bold">id user :</span><span data-th-text="${l.user.id}"></span></div>
+        <a class="text-blue-500" th:href="@{/livre/lister/{id}(id =${l.id})}">détail</a>
+        <a class="text-red-500" th:href="@{/livre/effacer/{id}(id =${l.id})}">delete</a>
+    </div>
+</div>
+<div>
+    <a href="index.html">Retourner a l'accueil</a>
+</div>
+</html>

@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
+<h1>
+    Détail compte
+</h1>
+<div data-th-each="l : ${livre}">
+    <div><span>id :</span><span data-th-text="${l.id}"></span></div>
+    <div><span>nom :</span><span data-th-text="${l.nom}"></span></div>
+    <div><span>nombre :</span><span data-th-text="${l.nombre}"></span></div>
+    <div><span>dateEmprunt :</span><span data-th-text="${l.dateEmprunt}"></span></div>
+    <div><span>dateRetour :</span><span data-th-text="${l.dateRetour}"></span></div>
+    <div><span>delaiPret :</span><span data-th-text="${l.delaiPret}"></span></div>
+    <div><span>id user :</span><span data-th-text="${l.user.id}"></span></div>
+</div>
+<div>
+    <a href="index.html">Retourner a l'accueil</a>
+</div>
+</html>

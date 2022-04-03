@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<h1>
+    Détail client
+</h1>
+<div data-th-each="u : ${user}">
+    <div><span>nom :</span><span data-th-text="${u.nom}"></span></div>
+    <div><span>prenom :</span><span data-th-text="${u.prenom}"></span></div>
+    <div><span>date de naissance :</span><span data-th-text="${u.dateNaissance}"></span></div>
+    <div>email :<span></span><span data-th-text="${u.email}"></span></div>
+    <div>mot de passe :<span></span><span data-th-text="${u.motDePasse}"></span></div>
+    <div>role :<span></span><span data-th-text="${u.role}"></span></div>
+</div>
+<div>
+    <a href="index.html">Retourner a l'accueil</a>
+</div>
+</html>

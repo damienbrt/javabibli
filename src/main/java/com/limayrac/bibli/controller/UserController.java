@@ -1,7 +1,7 @@
 package com.limayrac.bibli.controller;
 
-import fr.limayrac.model.Client;
-import fr.limayrac.service.ClientService;
+import com.limayrac.bibli.model.User;
+import com.limayrac.bibli.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,39 +17,42 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/lister")
-    public ModelAndView listeLivre() {
-        return new ModelAndView("user/livre", "user", clientService.getClients());
+    public ModelAndView listeUser() {
+        return new ModelAndView("user/listeUser", "user", userService.getUsers());
     }
 
     @GetMapping("/lister/{id}")
-    public ModelAndView detailClient(@PathVariable("id") final Integer id) {
-        Optional<Client> client = clientService.getClient(id);
-        return new ModelAndView("client/detailclient", "client", client.orElse(null));
+    public ModelAndView detailUser(@PathVariable("id") final Integer id) {
+        Optional<User> user = userService.getUser(id);
+        return new ModelAndView("user/detailuser", "user", user.orElse(null));
     }
 
     @GetMapping("/creer")
-    public ModelAndView creerClient() {
-        Client client = new Client();
-        return new ModelAndView("client/creerclient", "client", client);
+    public ModelAndView creerUser() {
+        User user = new User();
+        return new ModelAndView("user/creeruser", "user", user);
     }
 
     @PostMapping("/creer")
-    public ModelAndView submitCreer(@ModelAttribute("client") Client client, ModelMap model) {
-        model.addAttribute("nom", client.getNom());
-        model.addAttribute("prenom", client.getPrenom());
-        clientService.saveClient(client);
-        return listeClient();
+    public ModelAndView submitCreer(@ModelAttribute("user") User user, ModelMap model) {
+        model.addAttribute("nom", user.getNom());
+        model.addAttribute("prenom", user.getPrenom());
+        userService.saveUser(user);
+        return listeUser();
     }
 
     @RequestMapping("/editer")
-    public String editerClient() {
-        return "client/editerclient";
+    public String editerUser() {
+        return "user/editeruser";
     }
 
     @RequestMapping("/effacer/{id}")
-    public ModelAndView effacerClient(@PathVariable int id) {
-        clientService.deleteClient(id);
-        return listeClient();
+    public ModelAndView effacerUser(@PathVariable int id) {
+        userService.deleteUser(id);
+        return listeUser();
     }
 }

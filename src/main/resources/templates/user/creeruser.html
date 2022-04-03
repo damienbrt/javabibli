@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>
+    Creer user
+</h1>
+<body>
+<form class="flex flex-col gap-2" action="#" th:action="@{/user/creer}" method="post" th:object="${user}">
+    <div>
+        <label>nom :</label>
+        <input type="text" th:field="*{nom}"/>
+    </div>
+    <div>
+        <label>prenom :</label>
+        <input type="text" th:field="*{prenom}"/>
+    </div>
+    <div>
+        <label>date naissance :</label>
+        <input type="text" th:field="*{dateNaissance}"/>
+    </div>
+    <div>
+        <label>email :</label>
+        <input type="text" th:field="*{email}"/>
+    </div>
+    <div>
+        <label>mot de passe :</label>
+        <input type="text" th:field="*{motDePasse}"/>
+    </div>
+    <div>
+        <label>role :</label>
+        <input type="text" th:field="*{role}"/>
+    </div>
+
+    <button type="submit">valider</button>
+</form>
+<div>
+    <a href="index.html">Retourner a l'accueil</a>
+</div>
+</body>
+</html>

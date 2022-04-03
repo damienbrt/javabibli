@@ -30,10 +30,10 @@ public class User {
     @Column(name = "motDePasse", length = 50)
     private String motDePasse;
 
-    @Column(name = "roles", length = 50)
-    private String roles;
+    @Column(name = "role", length = 50)
+    private String role;
 
-    @OneToMany(mappedBy = "livre")
+    @OneToMany(mappedBy = "user")
     private List<Livre> livre = new ArrayList<>();
 
     public User() {

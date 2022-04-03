@@ -21,13 +21,13 @@ public class Livre {
     private Integer nombre;
 
     @Column(name = "dateEmprunt")
-    private Date dateEmprunt;
+    private String dateEmprunt;
 
     @Column(name = "dateRetour")
-    private Date dateRetour;
+    private String dateRetour;
 
     @Column(name = "delaiPret")
-    private Date delaiPret;
+    private String delaiPret;
 
     @ManyToOne
     @JoinColumn(name = "idUser")
