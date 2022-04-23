@@ -1,6 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <h1>
-    Editer compte
+    Editer livre
 </h1>
+<body>
+<form class="flex flex-col gap-2" action="#" th:action="@{/livre/editer}" method="post" th:object="${livre}">
+    <div>
+        <label class="font-bold">nom :</label>
+        <input type="text" th:field="*{nom}"/>
+    </div>
+    <div>
+        <label class="font-bold">nombre :</label>
+        <input type="number" th:field="*{nombre}"/>
+    </div>
+    <div>
+        <label class="font-bold">dateEmprunt :</label>
+        <input type="text" th:field="*{dateEmprunt}"/>
+    </div>
+    <div>
+        <label class="font-bold">dateRetour :</label>
+        <input type="text" th:field="*{dateRetour}"/>
+    </div>
+    <div>
+        <label class="font-bold">delaiPret :</label>
+        <input type="text" th:field="*{delaiPret}"/>
+    </div>
+    <div>
+        <label class="font-bold">Utilisateur</label>
+        <select th:field="*{user}">
+            <option th:each="Linkuser : ${user}" th:value="${Linkuser.id}" th:text="${Linkuser.nom}"></option>
+        </select>
+    </div>
+    <button type="submit">valider</button>
+</form>
+<div>
+    <a href="http://localhost:8080/">Retourner a l'accueil</a>
+</div>
+</body>
 </html>

@@ -15,26 +15,20 @@
     </div>
     <div>
         <label class="font-bold">dateEmprunt :</label>
-        <input type="text" th:field="*{dateEmprunt}"/>
+        <input type="date" th:field="*{dateEmprunt}"/>
     </div>
     <div>
         <label class="font-bold">dateRetour :</label>
-        <input type="text" th:field="*{dateRetour}"/>
+        <input type="date" th:field="*{dateRetour}"/>
     </div>
     <div>
         <label class="font-bold">delaiPret :</label>
         <input type="text" th:field="*{delaiPret}"/>
     </div>
-    <div>
-        <label class="font-bold">Utilisateur</label>
-        <select th:field="*{user}">
-            <option th:each="Linkuser : ${users}" th:value="${Linkuser.id}" th:text="${Linkuser.nom}"></option>
-        </select>
-    </div>
     <button type="submit">valider</button>
 </form>
 <div>
-    <a href="index.html">Retourner a l'accueil</a>
+    <a href="http://localhost:8080/">Retourner a l'accueil</a>
 </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.limayrac.bibli.controller;
 
 import com.limayrac.bibli.model.User;
+import com.limayrac.bibli.service.LivreService;
 import com.limayrac.bibli.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,25 +23,23 @@ public class UserController {
 
     @GetMapping("/lister")
     public ModelAndView listeUser() {
-        return new ModelAndView("user/listeUser", "user", userService.getUsers());
+        return new ModelAndView("user/listeuser", "users", userService.getUsers());
     }
 
     @GetMapping("/lister/{id}")
     public ModelAndView detailUser(@PathVariable("id") final Integer id) {
         Optional<User> user = userService.getUser(id);
-        return new ModelAndView("user/detailuser", "user", user.orElse(null));
+        return new ModelAndView("user/detailuser", "users", user.orElse(null));
     }
 
     @GetMapping("/creer")
     public ModelAndView creerUser() {
         User user = new User();
-        return new ModelAndView("user/creeruser", "user", user);
+        return new ModelAndView("user/creeruser", "users", user);
     }
 
     @PostMapping("/creer")
-    public ModelAndView submitCreer(@ModelAttribute("user") User user, ModelMap model) {
-        model.addAttribute("nom", user.getNom());
-        model.addAttribute("prenom", user.getPrenom());
+    public ModelAndView submitCreer(@ModelAttribute("users") User user, ModelMap model) {
         userService.saveUser(user);
         return listeUser();
     }
@@ -55,4 +54,6 @@ public class UserController {
         userService.deleteUser(id);
         return listeUser();
     }
+
+
 }

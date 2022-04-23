@@ -4,36 +4,37 @@
     Creer user
 </h1>
 <body>
-<form class="flex flex-col gap-2" action="#" th:action="@{/user/creer}" method="post" th:object="${user}">
+<form class="flex flex-col gap-2" action="#" th:action="@{/user/creer}" method="post" th:object="${users}">
     <div>
-        <label>nom :</label>
-        <input type="text" th:field="*{nom}"/>
-    </div>
-    <div>
-        <label>prenom :</label>
-        <input type="text" th:field="*{prenom}"/>
+        <label>username :</label>
+        <input type="text" th:field="*{username}"/>
     </div>
     <div>
         <label>date naissance :</label>
-        <input type="text" th:field="*{dateNaissance}"/>
+        <input type="date" th:field="*{dateNaissance}"/>
     </div>
     <div>
         <label>email :</label>
-        <input type="text" th:field="*{email}"/>
+        <input type="email" th:field="*{email}"/>
     </div>
     <div>
-        <label>mot de passe :</label>
-        <input type="text" th:field="*{motDePasse}"/>
+        <label>password :</label>
+        <input type="password" th:field="*{password}"/>
     </div>
     <div>
-        <label>role :</label>
-        <input type="text" th:field="*{role}"/>
+        <label>enabled :</label>
+        <input type="text" th:field="*{enabled}"/>
     </div>
-
+    <div>
+        <label class="font-bold">Livres</label>
+        <select th:field="*{livres}">
+            <option th:each="l : ${livres}" th:value="${l.id}" th:text="${l.nom}"></option>
+        </select>
+    </div>
     <button type="submit">valider</button>
 </form>
 <div>
-    <a href="index.html">Retourner a l'accueil</a>
+    <a href="http://localhost:8080/">Retourner a l'accueil</a>
 </div>
 </body>
 </html>
