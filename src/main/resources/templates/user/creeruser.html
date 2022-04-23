@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <h1>
     Creer user
 </h1>
@@ -24,12 +25,6 @@
     <div>
         <label>enabled :</label>
         <input type="text" th:field="*{enabled}"/>
-    </div>
-    <div>
-        <label class="font-bold">Livres</label>
-        <select th:field="*{livres}">
-            <option th:each="l : ${livres}" th:value="${l.id}" th:text="${l.nom}"></option>
-        </select>
     </div>
     <button type="submit">valider</button>
 </form>
